@@ -12,18 +12,6 @@ Empirical Measurement: Ideal for practical physics, acoustic demonstrations, and
 Check out our real-world test where we measure the frequency shift of a passing vehicle:
 https://youtu.be/tTv-7G6lbeY
 
-📥 Installation (APK)
-You can download and install the app directly from our Releases page.
-
-Go to the  section of this repository.
-
-Download the latest .apk file to your Android device.
-
-Open the downloaded file.
-
-Note: Android's security settings may block the installation initially. You will need to allow "Install unknown apps" (or "Unknown sources") in your device's settings for your browser or file manager.
-
-Tap Install and you are ready to measure!
 
 🚀 How to Use
 Stand near a road or path (always prioritize safety and stand at a secure distance from traffic).
