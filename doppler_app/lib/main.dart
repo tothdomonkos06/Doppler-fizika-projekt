@@ -59,29 +59,29 @@ class _DopplerAppState extends State<DopplerApp> {
         return szegmens;
       }
 
-      // Most már egy listát tárolunk minden pontnál: [frekvencia, hangerő]
+      // Most már egy listát tárolunk minden pontnál: [frekvencia, hangero]
       List<List<double>> ervenyesAdatok = [];
-      double globalisMaxHangerej = 0.0; // A felvétel legesleghangosabb pontja
+      double globalisMaxHangero = 0.0; // A felvétel legesleghangosabb pontja
 
       for (int kezdet = 2000; kezdet + ablakMeret < nyersAdatok.length; kezdet += lepesKoz) {
         List<double> eredmeny = _csucsFrekvencia(mintaFrekvencia, szegmensLeker(kezdet, ablakMeret));
         double frekvencia = eredmeny[0];
-        double hangerej = eredmeny[1];
+        double hangero = eredmeny[1];
 
         if (frekvencia > 0) {
           ervenyesAdatok.add(eredmeny);
-          if (hangerej > globalisMaxHangerej) {
-            globalisMaxHangerej = hangerej; // Elmentjük, mekkora volt a leghangosabb duda
+          if (hangero > globalisMaxHangero) {
+            globalisMaxHangero = hangero; // Elmentjük, mekkora volt a leghangosabb duda
           }
         }
       }
 
       setState(() {
-        // Hangerő szűrés: Csak azokat a frekiket tartjuk meg, amik elég hangosak voltak
-        // (Elérte a maximális hangerő legalább 20%-át). Ez levágja a távolodó motorzajt!
+        // Hangero szűrés: Csak azokat a frekiket tartjuk meg, amik elég hangosak voltak
+        // (Elérte a maximális hangero legalább 20%-át). Ez levágja a távolodó motorzajt!
         List<double> erosFrekvenciak = [];
         for (var adat in ervenyesAdatok) {
-          if (adat[1] >= globalisMaxHangerej * 0.20) {
+          if (adat[1] >= globalisMaxHangero * 0.20) {
             erosFrekvenciak.add(adat[0]);
           }
         }
@@ -110,7 +110,7 @@ class _DopplerAppState extends State<DopplerApp> {
     }
   }
 
-  // A matematikai motor most már a [frekvencia, hangerő] párossal tér vissza
+  // A matematikai motor most már a [frekvencia, hangero] párossal tér vissza
   List<double> _csucsFrekvencia(int mintaFrekvencia, List<double> szegmens) {
     final fft = FFT(szegmens.length);
     final spektrum = fft.realFft(szegmens);
